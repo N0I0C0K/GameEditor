@@ -9,6 +9,7 @@
 #include<QLabel>
 #include<QPainter>
 #include<QImage>
+//#include<iostream>
 #include"dayline.h"
 #include"edaytab.h"
 

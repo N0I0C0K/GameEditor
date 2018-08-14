@@ -3,12 +3,14 @@
 #include"eventline.h"
 #define HEADEVENT_H
 #include"dayline.h"
+#include"eventwidget.h"
 #include<QPushButton>
 #include<QMouseEvent>
 #include<QList>
 #include<QDebug>
 
 class Dayline;
+class EventWidget;
 class HeadEvent : public QPushButton,public Eventline
 {
 public:
@@ -17,6 +19,7 @@ public:
     void HideAllEvent(HeadEvent* ev = NULL);
     int index = 0;
     Dayline* Day = NULL;
+    EventWidget* eventwidget = NULL;
     HeadEvent* parentEvent = NULL;
     QList<HeadEvent*> nextEvent;
 public slots:

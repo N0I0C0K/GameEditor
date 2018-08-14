@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    //cout<<"hhh";
     connect(ui->pushButton,SIGNAL(clicked(bool)),this,SLOT(EaddDayTab()));
     connect(ui->tabWidget,SIGNAL(currentChanged(int)),this,SLOT(EDayTabChange(int)));
     connect(ui->pushButton_2,SIGNAL(clicked(bool)),this,SLOT(EaddHeadEvent()));

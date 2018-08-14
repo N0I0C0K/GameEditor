@@ -1,16 +1,19 @@
 #include "headevent.h"
+#include"eventwidget.h"
 #include "dayline.h"
 
 HeadEvent::HeadEvent(Dayline* dayline,HeadEvent* parentEvent)
 {
     this->Day = dayline;
+    this->eventwidget = this->Day->DayWid->eventwidget;
+    //Day->DayWid->escroll->resize(500,500);
     if(parentEvent != NULL)
     {
         this->parentEvent = parentEvent;
         this->index = parentEvent->nextEvent.count();
     }
     //this->connect(this,SIGNAL(clicked(bool)),this,SLOT(LeftClick(bool )));
-    this->setParent(Day->DayWid);
+    this->setParent(this->eventwidget);
     this->setText("headevent");
     QFont font("黑体",8,8);
     this->setFont(font);
@@ -28,8 +31,8 @@ void HeadEvent::mousePressEvent(QMouseEvent *e)
         EventlineManager::getInstance()->currentEvent = this;
         int x = this->x()+this->rect().width();
         int y = this->y();
-        this->Day->DayWid->eventbox->move(x,y);
-        this->Day->DayWid->eventbox->show();
+        this->eventwidget->eventbox->move(x,y);
+        this->eventwidget->eventbox->show();
         qDebug()<<"click";
         return;
     }
@@ -52,12 +55,12 @@ void HeadEvent::mousePressEvent(QMouseEvent *e)
                         HeadEvent* eve = this->Day->event.at(i);
                         eve->HideAllEvent();
                     }*/
-                    HeadEvent* eve = this->Day->event.at(i);
                     if(i != this->parentEvent->index)
                     {
+                        HeadEvent* eve = this->Day->event.at(i);
                         for(int j = 0;j<eve->nextEvent.count();j++)
                         {
-                            HeadEvent *eve2 = eve->nextEvent.at(i);
+                            HeadEvent *eve2 = eve->nextEvent.at(j);
                             eve2->HideAllEvent();
                         }
                     }
@@ -67,13 +70,13 @@ void HeadEvent::mousePressEvent(QMouseEvent *e)
         }
     }
     qDebug()<<"_HeadEvent::mousePressEvent(QMouseEvent *e)";
-    this->Day->DayWid->eventbox->hide();
+    this->eventwidget->eventbox->hide();
 }
 
 void HeadEvent::addNextEvent()
 {
     HeadEvent* ev = HeadEvent::create(this->Day,this);
-    int h = (this->Day->DayWid->rect().height())/(this->nextEvent.length()+2);
+    int h = (this->eventwidget->rect().height())/(this->nextEvent.length()+2);
     if(this->nextEvent.count() == 0)
     {
         ev->move(this->x()+this->width()+15,this->y());
@@ -101,6 +104,7 @@ void HeadEvent::HideAllEvent(HeadEvent* ev)
     if(this->nextEvent.count() == 0)
     {
         this->hide();
+        qDebug()<<"hide event index:"<<this->index;
     }
     else
     {
@@ -113,6 +117,7 @@ void HeadEvent::HideAllEvent(HeadEvent* ev)
             else
             {
                 this->nextEvent.at(i)->hide();
+                qDebug()<<"hide event index:"<<this->nextEvent.at(i)->index;
             }
         }
     }

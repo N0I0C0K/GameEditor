@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1006</width>
-    <height>687</height>
+    <width>1067</width>
+    <height>699</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -163,10 +163,6 @@
         </property>
        </widget>
       </widget>
-      <zorder>tabWidget</zorder>
-      <zorder>groupBox_3</zorder>
-      <zorder>groupBox_4</zorder>
-      <zorder>tabWidget</zorder>
      </widget>
     </item>
     <item>
@@ -208,7 +204,7 @@
          <x>0</x>
          <y>0</y>
          <width>198</width>
-         <height>633</height>
+         <height>645</height>
         </rect>
        </property>
        <property name="layoutDirection">
