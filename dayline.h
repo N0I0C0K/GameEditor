@@ -14,6 +14,7 @@ class Dayline : public Timeline
 public:
     Dayline(QString strName,int index,EDayTab *wid);
     void AddHeadEvent();
+    void OrderAllPos();
     //virtual void addline();
     QList<HeadEvent*> event;
     EDayTab *DayWid = NULL;

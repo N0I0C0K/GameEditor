@@ -13,15 +13,8 @@ EDayTab::EDayTab(QString strName,int index,QWidget *parent) : QWidget(parent)
     this->escroll->move(0,0);
     this->escroll->setBackgroundRole(QPalette::Shadow);
     qDebug()<<"escroll heigh:"<<this->escroll->size().height()<<"width:"<<this->escroll->size().width();
-    //this->escroll->setMinimumSize(this->size().height()+20,this->size().width()-30);
-    //this->escroll->resize(500,610);
     this->escroll->resize(this->size().height(),this->size().width());
     qDebug()<<"escroll heigh:"<<this->escroll->size().height()<<"width:"<<this->escroll->size().width();
-    //this->escroll->widget()->resize(500,500);
-    //this->escroll->setMinimumSize(this->size());
-    //this->escroll->resize(this->size());
-    /*eventbox = new EventBox(this);
-    eventbox->hide();*/
 }
 
 void EDayTab::resizeEvent(QResizeEvent *event)

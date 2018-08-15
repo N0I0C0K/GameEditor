@@ -17,6 +17,9 @@ public:
     static HeadEvent* create(Dayline *dayline,HeadEvent* parentEvent = NULL);
     void addNextEvent();
     void HideAllEvent(HeadEvent* ev = NULL);
+    void showAllEvent();
+    void orderPos();
+    void getMaxH(int &MaxH);
     int index = 0;
     Dayline* Day = NULL;
     EventWidget* eventwidget = NULL;
